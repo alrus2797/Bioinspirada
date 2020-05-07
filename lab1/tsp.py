@@ -12,6 +12,8 @@ params = {
 	'p_mut'			: 0.07,
 }
 
+print(tabulate(params.items()))
+
 params = type('new_dict', (object,), params)
 
 places = list(range(params.n_places))
@@ -43,7 +45,10 @@ population = np.array(population)
 bio_utils.show_map_table('Poblacion Inicial', population, np.array(range(params.n_population)).reshape(-1,1),lambda x, y: print(bio_utils.show_route(x)))
 apptitutes = list(map(lambda x: (bio_utils.get_route_cost(routes, x[1]), x[0]), enumerate(population)))
 
+best_apptitute = float('inf')
+
 for iteration in range(params.iterations):
+	print('|'+sep, f'Iteracion {iteration + 1}', sep+'|','\n')
 
 	bio_utils.show_map_table('Poblacion Actual - Aptitudes', population, np.array(apptitutes)[:,0],lambda x, y: print(bio_utils.show_route(x),' => ',y))
 
@@ -94,11 +99,17 @@ for iteration in range(params.iterations):
 	apptitutes = list(map(lambda x: (bio_utils.get_route_cost(routes, x[1]), x[0]), enumerate(population)))
 
 	print('|'+sep, f'Fin de Iteracion {iteration + 1}', sep+'|','\n')
+	
+
+	best_curr_gen = min(apptitutes)
+	if  best_curr_gen[0] < best_apptitute:
+		best_of_best, best_it, best_curr_gen = population[best_curr_gen[1]].copy(), iteration+1, best_curr_gen
+
 
 
 
 bio_utils.show_map_table('Poblacion Final', population, np.array(apptitutes)[:,0],lambda x, y: print(bio_utils.show_route(x),' => ',y))
-# print('Best:', best_of_best, 'Iteration', best_it)
+print('Best:', bio_utils.show_route(best_of_best), '=>',best_curr_gen[0], 'Iteration', best_it)
 
 
 

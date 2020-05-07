@@ -88,7 +88,7 @@ for iteration in range(params.iterations):
 
 print('Poblacion Final:')
 print(tabulate(np.append(population, np.array(apptitude)[:,[0]], axis=1), headers= ['x','y','f(x,y)'],tablefmt='orgtbl'),'\n')
-print('Best:', best_of_best, 'Iteration', best_it)
+print('Best:', best_of_best, '=>',best_curr_gen[0], 'Iteration', best_it)
 
 
 
