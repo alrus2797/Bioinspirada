@@ -1,6 +1,6 @@
 import numpy as np
 from tabulate import tabulate
-from bio_utils import bio_utils
+from utils import bio_utils
 
 sep = '-----------------------------'
 params = {

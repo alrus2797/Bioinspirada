@@ -1,6 +1,6 @@
 import numpy as np
 import math
-from bio_utils import bio_utils
+from utils import bio_utils
 from tabulate import tabulate
 
 sep = '-----------------------------'
