@@ -1,6 +1,6 @@
 import math
 import numpy as np
-from utils import bio_utils as bu, es11_utils as es
+from utils import ga_utils as ga, es_utils as es
 from tabulate import tabulate
 import sys
 
@@ -57,7 +57,7 @@ def run(new_params={}, stdout=None):
 				parents_idx[idx]	= min_idx
 				print(f'\tParents {idx + 1}: {parents} => {min_idx} => {poblation[min_idx]} {sigmas[min_idx]}')
 				
-			child		= bu.mean_cross(*poblation[parents_idx])
+			child		= ga.mean_cross(*poblation[parents_idx])
 			sigma_child	= es.sigma_uniform_cross(*sigmas[parents_idx])
 			print(f'Hijo {lambda_counter + 1}: {child} sigmas: {sigma_child}\n') 
 			print('Mutacion:')

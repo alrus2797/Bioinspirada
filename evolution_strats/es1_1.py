@@ -1,6 +1,6 @@
 import math
 import numpy as np
-from utils import bio_utils as bu, es11_utils as es
+from utils import es_utils as es
 from tabulate import tabulate
 import sys
 

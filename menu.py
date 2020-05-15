@@ -7,35 +7,40 @@ class Menu:
     def i2_tsp(self, params, std = None):
         import genetic_algs.tsp
     def i3_es11(self, params, std = None):
-        import evolution_estrats.es11 as mu_1
+        import evolution_strats.es1_1 as mu_1
         mu_1.run(params, std)
-
     def i4_esu1(self, params, std = None):
-        import evolution_estrats.esu1 as mu_lambda
+        import evolution_strats.esmu_lambda as mu_lambda
         mu_lambda.run(params, std)
+
     options = [
         {
-            'name':'reales',
+            'name'  :'reals',
+            'type'  : 'algorithm',
             'action': 0,
             'params': {}
         },
         {
-            'name':'tsp',
+            'name'  :'tsp',
+            'type'  : 'algorithm',
             'action': 1,
             'params': {}
         },
         {
-            'name':'(1 + 1)',
+            'name'  :'(1 + 1)',
+            'type'  : 'strategy',
             'action': 2,
             'params': {}
         },
         {
-            'name':'(mu + 1)',
+            'name'  :'(mu + 1)',
+            'type'  : 'strategy',
             'action': 3,
             'params': {'_lambda': 1}
         },
         {
-            'name':'(mu + lambda)',
+            'name'  :'(mu + lambda)',
+            'type'  : 'strategy',
             'action': 3,
             'params': {
                 'iterations': 250,
@@ -43,7 +48,8 @@ class Menu:
             }
         },
         {
-            'name':'(mu, lambda)',
+            'name'  :'(mu, lambda)',
+            'type'  : 'strategy',
             'action': 3,
             'params': {
                 'iterations': 100,
@@ -61,7 +67,7 @@ class Menu:
 
         f = getattr(self,methods[option_choosed['action']])
         params = option_choosed['params']
-        print(f'Executing: {option_choosed["name"]} strategy')
+        print(f'Executing: {option_choosed["name"]} {option_choosed["type"]}')
         console_stdout      = sys.stdout
         sys.stdout  = open(f'output/{option_choosed["name"]}.txt', 'w')
         f(params, console_stdout)

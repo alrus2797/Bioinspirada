@@ -1,6 +1,6 @@
 import numpy as np
 import math
-from utils import bio_utils
+from utils import ga_utils
 from tabulate import tabulate
 
 sep = '-----------------------------'
@@ -47,7 +47,7 @@ for iteration in range(params.iterations):
 	# print('|\tm1\t|\tm2\t |\twin\t|')
 	# print('-'*49)
 	# list(map(lambda x,y: print(f'|\t{x[0]}\t-\t{x[1]}\t=>\t{y}\t|') , pairs, mating_pool))
-	bio_utils.show_map_table('Creacion de MATING POOL',pairs, mating_pool, cols=['m1','m2','win'])
+	ga_utils.show_map_table('Creacion de MATING POOL',pairs, mating_pool, cols=['m1','m2','win'])
 
 	parents = np.random.randint(0, params.n_population, ((params.n_population,2)))
 
@@ -60,7 +60,7 @@ for iteration in range(params.iterations):
 		if np.random.random() < params.p_cross:
 			print('Si')
 			print('Beta: ')
-			child = bio_utils.blx_cross(population[idp1],population[idp2], params.blx_a, True)
+			child = ga_utils.blx_cross(population[idp1],population[idp2], params.blx_a, True)
 		else:
 			print('No')
 			child = new_population[min(apptitude[idp1], apptitude[idp2])[1]]
@@ -72,7 +72,7 @@ for iteration in range(params.iterations):
 		print('Mutacion? ', end='')
 		if np.random.random() < params.p_mut:
 			print('Si')
-			bio_utils.uniform_mut(new_population[i])
+			ga_utils.uniform_mut(new_population[i])
 			print('Nueva forma:', new_population[i])
 		else: print('No')
 		print()
