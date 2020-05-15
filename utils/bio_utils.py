@@ -40,6 +40,9 @@ def get_route_cost(routes, route):
 		last_place = current_place
 	return res
 
+def mean_cross(c1, c2):
+	return list(map(lambda x,y:(x+y)/2, c1,c2))
+
 def obx_cross(c1,c2):
 	probs = np.random.random(len(c1))
 	filtered = np.where(probs < 0.5)[0]
