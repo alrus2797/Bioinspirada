@@ -2,6 +2,7 @@ import math
 import numpy as np
 from utils import bio_utils as bu, es11_utils as es
 from tabulate import tabulate
+import sys
 
 
 def f(x,y):
@@ -20,7 +21,10 @@ default_params = {
 	'range'			: (-10,10),
 }
 
-def run(new_params={}):
+
+def run(new_params={}, stdout=None):
+	if not stdout: 
+		stdout = sys.stdout
 	print('Parametros:')
 	default_params.update(new_params)
 	print(tabulate(default_params.items(),headers= ['Name','Value'],tablefmt='orgtbl'),'\n')
@@ -74,6 +78,12 @@ def run(new_params={}):
 		poblation	= lambda_poblation[ordered_idx][:-params._lambda]
 		sigmas		= lambda_sigmas[ordered_idx][:-params._lambda]
 		fitness		= lambda_fitness[ordered_idx][:-params._lambda]
+
+		temp = sys.stdout
+		sys.stdout = stdout
+		
+		print(f"\tIteration: {iteration + 1}/{params.iterations}", end='\r')
+		sys.stdout = temp
 			
 
 	print('Poblacion Final Seleccionada:')
