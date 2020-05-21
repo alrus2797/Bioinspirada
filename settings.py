@@ -1,4 +1,4 @@
-interval = [2, None]
+interval = [6, None]
 
 options = [
     {
@@ -41,6 +41,16 @@ options = [
         'params': {
             'iterations': 100,
             '_lambda': 12
+        }
+    },
+    {
+        'name'  :'prediction',
+        'type'  : 'program',
+        'action': 5,
+        'params': {
+            'iterations'    : 1500,
+            'n_poblation'   : 16,
+            'predict_seq'	: '0111001010011100101001110010100111001010',
         }
     },
 ]

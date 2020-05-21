@@ -19,6 +19,9 @@ class Menu:
     def i4_esu1(self, params, std = None):
         import evolution_strats.esmu_lambda as mu_lambda
         mu_lambda.run(params, std)
+    def i5_predict(self, params, std = None):
+        import evolutive_pgm.predict as prediction
+        prediction.run(params, std)
 
     def run(self):
         methods = [ m for m in dir(Menu) if not m.startswith('__') ]

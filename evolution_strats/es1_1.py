@@ -18,7 +18,7 @@ default_params = {
 
 def run(new_params, stdout = None):
 	if not stdout: 
-			stdout = sys.stdout	
+		stdout = sys.stdout	
 
 	print('Parametros:')
 	print(tabulate(default_params.items(),headers= ['Name','Value'],tablefmt='orgtbl'),'\n')
