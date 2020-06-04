@@ -48,7 +48,7 @@ def run(new_params = {}, stdout = None):
 	poblation, fitness = np.array(poblation), np.array(fitness)
 
 	gp.show_poblation(poblation, fitness)
-
+	current_best = -1
 	for iteration in range(params.iterations):
 		print(f'-------------- Iteracion {iteration + 1} --------------')
 		new_poblation = []
@@ -108,12 +108,20 @@ def run(new_params = {}, stdout = None):
 				new_poblation.append(winner)
 
 			print()
+		
 
 		poblation = new_poblation
 		print('Calcular aptitud para cada individuo: ')
 		fitness	= np.array(gp.get_poblation_fitness(poblation, tests))
 		print('Nueva poblacion: ')
 		gp.show_poblation(poblation, fitness)
+
+		temp = sys.stdout
+		sys.stdout = stdout
+
+		print(f"\tIteration: {iteration + 1}/{params.iterations}",end='\r')
+		
+		sys.stdout = temp
 	
 	best_idx = np.argmin(fitness)
 	best = poblation[best_idx]
