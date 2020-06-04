@@ -1,4 +1,4 @@
-interval = [6, None]
+interval = [7, 8]
 
 options = [
     {
@@ -51,6 +51,14 @@ options = [
             'iterations'    : 1500,
             'n_poblation'   : 16,
             'predict_seq'	: '0111001010011100101001110010100111001010',
+        }
+    },
+    {
+        'name'  :'Find function',
+        'type'  : 'algorithm',
+        'action': 6,
+        'params': {
+            'iterations': 150,
         }
     },
 ]
