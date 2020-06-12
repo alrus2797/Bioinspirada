@@ -84,7 +84,7 @@ def run(new_params={}, stdout=None):
 		temp = sys.stdout
 		sys.stdout = stdout
 		
-		print(f"\tIteration: {iteration + 1}/{params.iterations} - Best subject {poblation[best_subject_idx]} -> {fitness[best_subject_idx]:.5f}",end='\r')
+		print(f"\tIteration: {iteration + 1}/{params.iterations} - Best subject {poblation[best_subject_idx]} -> {fitness[best_subject_idx]:.5f}", end='\r')
 		# print(f'\tBest subject: {poblation[best_subject_idx]}', end='\r')
 		sys.stdout = temp
 			
