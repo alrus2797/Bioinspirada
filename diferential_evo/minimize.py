@@ -8,7 +8,7 @@ default_headers = ['x', 'y', 'a', 'b']
 default_params = {
 	'iterations'	: 1000,
 	'n_dimension'	: 4,
-	'n_poblation'	: 8,
+	'n_poblation'	: 16,
 	'range'			: (-10,10),
 	'mut_const'		: 0.8,
 }
@@ -30,7 +30,7 @@ def run(new_params={}, stdout=None):
 	poblation = np.random.uniform(*params.range,(params.n_poblation, params.n_dimension))
 	print_tab(poblation, 'Poblacion',headers=['x','y','a','b'])
 
-	fitness	= list(map(lambda vector: de.f(*vector), poblation))
+	fitness	= list(map(lambda vector: de.get_fitness(vector), poblation))
 
 	res = np.column_stack((poblation, fitness))
 
@@ -64,7 +64,7 @@ def run(new_params={}, stdout=None):
 		temp = sys.stdout
 		sys.stdout = stdout
 		best_subject_idx = np.argmin(fitness)
-		print(f"\tIteration: {iteration + 1}/{params.iterations} - Best subject {np.around(poblation[best_subject_idx],2)} -> {fitness[best_subject_idx]:.8f}", end='\r')
+		print(f"\tIteration: {iteration + 1}/{params.iterations} - Best subject {np.around(poblation[best_subject_idx],2)} -> {fitness[best_subject_idx]:.15f} {' ' * 19}", end='\r')
 		sys.stdout = temp
 
 		poblation	= np.array(new_poblation)
