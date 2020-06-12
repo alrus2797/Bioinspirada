@@ -35,6 +35,6 @@ def mut_cross(subject, k_vector, l_vector, m_vector, mut_const, subject_fitness)
 	cross_proccess(trial_vector, mutated_vector)
 
 	trial_fitness = get_fitness(trial_vector)
-	print(f'Vector Trial: {trial_vector} - Fitness: {subject}')
+	print(f'Vector Trial: {trial_vector} - Fitness: {trial_fitness}')
 
 	return trial_vector, trial_fitness < subject_fitness
