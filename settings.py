@@ -1,4 +1,4 @@
-interval = [7, 8]
+interval = [0, None]
 
 options = [
     {
@@ -59,6 +59,14 @@ options = [
         'action': 6,
         'params': {
             'iterations': 150,
+        }
+    },
+    {
+        'name'  :'Diferential minimization',
+        'type'  : 'estrategy',
+        'action': 7,
+        'params': {
+            'iterations': 750,
         }
     },
 ]
