@@ -66,7 +66,7 @@ options = [
         'type'  : 'estrategy',
         'action': 7,
         'params': {
-            'iterations': 750,
+            'iterations': 200,
         }
     },
 ]
