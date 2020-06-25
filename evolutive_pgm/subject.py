@@ -98,7 +98,7 @@ class Subject():
 		print('After:  ', self)
 		print()
 
-	def get_graph(self, filename='Subject'):
+	def get_graph(self, filename='Subject', view=False):
 		self.graph.attr('node',color='4', colorscheme='paired4')
 		for state in self.get_active_states():
 			if state.status == 2:
@@ -107,7 +107,7 @@ class Subject():
 				self.graph.node(state.name, color='2', colorscheme='paired4')
 			for idx, neighbour in enumerate(state.neighbours):
 				self.graph.edge(state.name, neighbour.name, label = f'  {state.inputs[idx]}/{state.outputs[idx]}\t\n', color='8', colorscheme='paired8')
-		self.graph.render(filename, view=True, cleanup=True)
+		self.graph.render(filename, view=view, cleanup=True)
 
 	def full_representation(self):
 		output, fitness = self.get_fitness()

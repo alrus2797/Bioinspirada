@@ -48,7 +48,7 @@ options = [
         'type'  : 'program',
         'action': 5,
         'params': {
-            'iterations'    : 1500,
+            'iterations'    : 500,
             'n_poblation'   : 16,
             'predict_seq'	: '0111001010011100101001110010100111001010',
         }

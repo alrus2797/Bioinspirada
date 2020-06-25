@@ -13,7 +13,7 @@ default_params = {
 	'predict_seq'	: '0111001010011100101001110010100111001010'
 }
 
-def run(new_params = {}, stdout = None):
+def _run(new_params = {}, stdout = None):
 	if not stdout: 
 		stdout = sys.stdout
 	print('Parametros:')
@@ -64,7 +64,8 @@ def run(new_params = {}, stdout = None):
 			if current_best >= best:
 				best	= current_best
 				ite		= iteration
-				print(f"\tIteration: {iteration + 1}/{params.iterations} - Best subject {best} -> {best.get_fitness()}",end='\r')
+				b_output, b_fitness	= best.get_fitness()
+				print(f"\tIteration: {iteration + 1}\t/ {params.iterations} - Best subject {best} -> {b_output}, {b_fitness}",end='\r')
 			
 			sys.stdout = temp
 
@@ -75,7 +76,19 @@ def run(new_params = {}, stdout = None):
 			ep.show_subjects(poblation, 'Nueva Poblacion')
 
 	print(f'Best found in iteration {ite + 1}: {best} -> {best.get_fitness()[1]}')
+	return best
 	best.get_graph('output/best_subject')
+
+def run(new_params={}, stdout=None):
+	for i in range(100):
+		temp = sys.stdout
+		sys.stdout = stdout
+		print('\n')
+		print('Hyperiteration', i + 1)
+		sys.stdout = temp
+		best=_run(new_params, stdout)
+		best.get_graph(f'output/subjects/best_subject_{i}')
+
 		
 
 
