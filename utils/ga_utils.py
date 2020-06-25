@@ -33,9 +33,6 @@ def get_route_cost(routes, route):
 	res = 0
 	last_place = route[0]
 	for current_place in route[1:]:
-		# print(last_place, current_place)
-		# print(np.array(routes))
-		# print( routes[last_place])
 		res += routes[last_place][current_place]
 		last_place = current_place
 	return res
